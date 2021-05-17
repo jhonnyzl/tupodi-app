@@ -1,2 +1,7 @@
 cd frontend
 npm start
+
+
+iniciar backend
+
+npm start
