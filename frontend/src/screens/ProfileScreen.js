@@ -10,6 +10,9 @@ export default function ProfileScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [sellerName, setSellerName] = useState('');
+  const [sellerLogo, setSellerLogo] = useState('');
+  const [sellerDescription, setSellerDescription] = useState('');
 
 
   const userSignin = useSelector((state) => state.userSignin);
@@ -30,6 +33,11 @@ export default function ProfileScreen() {
     } else {
       setName(user.name);
       setEmail(user.email);
+      if (user.seller) {
+        setSellerName(user.seller.name);
+        setSellerLogo(user.seller.logo);
+        setSellerDescription(user.seller.description);
+      }
     }
   }, [dispatch, userInfo._id, user]);
   const submitHandler = (e) => {
@@ -38,7 +46,17 @@ export default function ProfileScreen() {
     if (password !== confirmPassword) {
       alert('La contraseña y la confirmación de la contraseña no coinciden');
     } else {
-      dispatch(updateUserProfile({ userId: user._id, name, email, password }));
+      dispatch(
+        updateUserProfile({
+          userId: user._id,
+          name,
+          email,
+          password,
+          sellerName,
+          sellerLogo,
+          sellerDescription,
+        })
+      );
     }
   };
   return (
@@ -100,6 +118,45 @@ export default function ProfileScreen() {
                 onChange={(e) => setConfirmPassword(e.target.value)}
               ></input>
             </div>
+            {user.isSeller && (
+              <>
+                
+                <div>
+                <h2>Vendedor</h2>
+                  <label htmlFor="sellerName">Nombre de vendedor</label>
+                  <input
+                    id="sellerName"
+                    type="text"
+                    placeholder="Ingrese el nombre del vendedor"
+                    value={sellerName}
+                    onChange={(e) => setSellerName(e.target.value)}
+                    required
+                  ></input>
+                </div>
+                <div>
+                  <label htmlFor="sellerLogo">Logo de vendedor</label>
+                  <input
+                    id="sellerLogo"
+                    type="text"
+                    placeholder="Ingrese el logo del vendedor"
+                    value={sellerLogo}
+                    onChange={(e) => setSellerLogo(e.target.value)}
+                    required
+                  ></input>
+                </div>
+                <div>
+                  <label htmlFor="sellerDescription">Descripción de vendedor</label>
+                  <input
+                    id="sellerDescription"
+                    type="text"
+                    placeholder="Ingrese la descripción del vendedor"
+                    value={sellerDescription}
+                    onChange={(e) => setSellerDescription(e.target.value)}
+                    required
+                  ></input>
+                </div>
+              </>
+            )}
             <div>
               <label />
               <button className="primary" type="submit">

@@ -13,6 +13,7 @@ import {
 } from '../constants/productConstants';
 
 export default function ProductListScreen(props) {
+  const sellerMode = props.match.path.indexOf('/seller') >= 0;
   const productList = useSelector((state) => state.productList);
   const { loading, error, products } = productList;
 
@@ -31,6 +32,8 @@ export default function ProductListScreen(props) {
     success: successDelete,
   } = productDelete;
 
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo } = userSignin;
   const dispatch = useDispatch();
   useEffect(() => {
     if (successCreate) {
@@ -40,8 +43,16 @@ export default function ProductListScreen(props) {
     if (successDelete) {
       dispatch({ type: PRODUCT_DELETE_RESET });
     }
-    dispatch(listProducts());
-  }, [createdProduct, dispatch, props.history, successCreate, successDelete]);
+    dispatch(listProducts({ seller: sellerMode ? userInfo._id : '' }));
+  }, [
+    createdProduct,
+    dispatch,
+    props.history,
+    sellerMode,
+    successCreate,
+    successDelete,
+    userInfo._id,
+  ]);
 
   const deleteHandler = (product) => {
     if (window.confirm('¿Estás seguro que quieres eliminar el producto?')) {
@@ -70,6 +81,7 @@ export default function ProductListScreen(props) {
       ) : error ? (
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
+        <>
         <table className="table">
           <thead>
             <tr>
@@ -78,7 +90,7 @@ export default function ProductListScreen(props) {
               <th>PRECIO</th>
               <th>CATEGORÍA</th>
               <th>MARCA</th>
-              <th>COMPORTAMIENTO</th>
+              <th>ACCIONES</th>
             </tr>
           </thead>
           <tbody>
@@ -97,7 +109,7 @@ export default function ProductListScreen(props) {
                       props.history.push(`/product/${product._id}/edit`)
                     }
                   >
-                    Edit
+                    Editar
                   </button>
                   <button
                     type="button"
@@ -111,6 +123,7 @@ export default function ProductListScreen(props) {
             ))}
           </tbody>
         </table>
+        </>
       )}
     </div>
   );
