@@ -1,0 +1,55 @@
+.tupodi-footer
+{
+    margin-top: -80px;
+    padding: 170px 0 100px 0;
+    display: block;
+    width: 100%;
+    clear: both;
+    text-align: center;
+    background: #313a47;
+    color: white;
+}
+.site-social-icons a {
+    width: 3rem;
+    height: 3rem;
+    background: #505762;
+    border-radius: 12.5rem;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    margin: 0.1875rem;
+    transition: 300ms linear;
+    transition-property: background, color, border-color;
+    transition: all ease .5s;
+}
+.site-social-icons i.fa, .site-social-icons span {
+    color: white;
+    font-size: 0.938rem;
+    font-weight: 400;
+    line-height: 3rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+.site-social-icons a:hover
+{
+    
+    color: white;
+    transition: all ease 1.5s;
+    background: linear-gradient(135deg, rgba(228,93,97,1) 0%, rgba(155,40,168,1) 100%);
+}
+.site-copyright {
+    color: #708198;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.5;
+    width: 100%;
+    clear: both;
+    margin-top: 1.25rem;
+}

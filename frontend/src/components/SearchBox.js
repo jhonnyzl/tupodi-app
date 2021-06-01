@@ -7,6 +7,8 @@ export default function SearchBox(props) {
     props.history.push(`/search/name/${name}`);
   };
   return (
+    <></>
+    /*
     <form className="search" onSubmit={submitHandler}>
       <div className="row">
         <input
@@ -20,5 +22,5 @@ export default function SearchBox(props) {
         </button>
       </div>
     </form>
-  );
+  */);
 }

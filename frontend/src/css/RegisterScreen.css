@@ -1,0 +1,42 @@
+:root
+{
+	--bg-primary:linear-gradient(135deg, rgba(228,93,97,1) 0%, rgba(155,40,168,1) 100%);
+}
+html
+{
+    min-height: 100%;
+}
+body
+{
+    min-height: 100%;
+    background: var(--bg-primary);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.btn-primary
+{
+    /*border-radius: 12.5em;*/
+    background: #80d380;
+    border: none;
+    background: linear-gradient(to right, rgba(70,200,255,1) 0%, rgba(129,211,126,1) 100%);
+    height: auto;
+    transition: 0.5s;
+}
+.btn-primary:hover {
+    box-shadow: 10px 10px 34px -11px rgb(0 0 0 / 75%);
+}
+
+.form-control
+{
+    /*border-radius: 12.5em;*/
+    border: none;
+    height: auto;
+}
+
+.padding6 {
+    padding-top: 6rem;
+}
+
+
+
+

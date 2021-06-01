@@ -46,6 +46,7 @@ export default function UserListScreen(props) {
             <tr>
               <th>ID</th>
               <th>NOMBRE</th>
+              <th>NOMBRE VENDEDOR</th>
               <th>CORREO ELECTRÓNICO</th>
               <th>ES VENDEDOR</th>
               <th>ES ADMINISTRADOR</th>
@@ -57,6 +58,7 @@ export default function UserListScreen(props) {
               <tr key={user._id}>
                 <td>{user._id}</td>
                 <td>{user.name}</td>
+                <td>{user.seller.name}</td>
                 <td>{user.email}</td>
                 <td>{user.isSeller ? 'SI' : ' NO'}</td>
                 <td>{user.isAdmin ? 'SI' : 'NO'}</td>

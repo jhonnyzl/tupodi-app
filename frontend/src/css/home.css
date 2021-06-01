@@ -1,0 +1,49 @@
+
+.banner-caption
+{
+  float: left;
+  width: 100%;
+  position: relative;
+  left: -15px;
+  padding: 50px 0 0 0;
+}
+.banner-caption h1 {
+  font-size: 160px;
+  color: #FFFFFF;
+  font-weight: 600;
+  letter-spacing: -2px;
+  line-height: 1;
+  padding: 0;
+  margin: 0;
+}
+.banner-caption h2 {
+  font-size: 32px;
+  color: #FFFFFF;
+  font-weight: normal;
+  line-height: 1;
+  padding: 0;
+  margin: 0;
+}
+.banner-caption p {
+  color: white;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 2;
+  margin-bottom: 1.875em;
+  white-space: pre-line;
+}
+.banner-caption .btn-primary
+{
+  line-height: 3.75em;
+  font-size: 0.8125em;
+  font-weight: 700;
+  border-radius: 12.5em;
+  min-width: 15em;
+  text-transform: uppercase;
+}
+.copyable
+{
+  border:none;
+  background-color: rgba(0,0,0,0);
+}
