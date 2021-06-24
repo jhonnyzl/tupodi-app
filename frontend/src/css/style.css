@@ -62,18 +62,18 @@ a:hover, a:active, a:focus, a:visited {
   top: 0;
   left: 0;
   right: 0;
-  transition: 1s;
+  transition: all 1s!important;
 }
 
 .sticky-headerscroll
 {
   position: fixed;
-	z-index: 100000 !important;
+	z-index: 100 !important;
   background: var(--bg-primary);
   left: 0;
   right: 0;
-  transition: 1s;
-  box-shadow: 10px 10px 34px -11px rgb(0 0 0 / 75%);
+  transition: all 1s!important;
+  box-shadow: 10px 1px 14px -11px rgb(0 0 0 / 75%);
   top:0;
   animation-name: example;
   animation-duration: 1s;
@@ -334,6 +334,13 @@ a:hover, a:active, a:focus, a:visited {
 	}
 }
 
+@media screen and (max-width: 767px)
+{
+	.nav-mobile {
+	    top: 0.7rem;
+	}
+}
+
 @media screen and (min-width: 992px)
 {
 	.site-nav ul.nav-off-canvas > li:hover .site-sub-menu {
@@ -368,6 +375,7 @@ a:hover, a:active, a:focus, a:visited {
 
 .padd {
   padding-right: 10rem;
+  height: 70px;
 }
 .paddl {
   padding-left: 5rem;
@@ -469,4 +477,52 @@ a:hover, a:active, a:focus, a:visited {
   to {
     transform: translateY(-2000px);
   }
+}
+
+.modal-content {
+  margin-top: 10rem;
+  z-index: 10000000!important;
+  border-radius: 0px;
+  border: 0px;
+  width: 50rem;
+  left: -28%;
+}
+.modal-header {
+  border-bottom: 0px solid #dee2e6;
+}
+.modal-backdrop {
+  z-index: 200!important;}
+  .modal-title {
+    padding-left: 50px;
+    padding-top: 50px;
+}
+.modal-body {
+  padding-left: 65px;
+}
+
+
+.bgimg2 {
+  height: 23rem;
+  width: 21rem;
+  background-image: url(https://bestwebcreator.com/shopwise/demo/assets/images/popup_img3.jpg);
+  background-position: center center;
+  background-size: cover;
+  float: right;
+  margin-top: -13rem;
+}
+
+.tupodisection {
+  padding: 170px 0 100px 0;
+  display: block;
+  width: 100%;
+  clear: both;
+  text-align: center;
+  background: #fff;
+  color: #153464;
+  padding-left: 150px;
+  padding-right: 150px;
+}
+
+.tupodicolor {
+  color: #9b28a8;
 }

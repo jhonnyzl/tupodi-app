@@ -5,9 +5,10 @@ import { signin } from '../actions/userActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 
+
+
 /*Estilos*/
-import '../fondo-start.css';
-import '../css/SigninScreen.css';
+
 
 export default function SigninScreen(props) {
   const [email, setEmail] = useState('');
@@ -31,62 +32,103 @@ export default function SigninScreen(props) {
   }, [props.history, redirect, userInfo]);
   return (
 
-<section className="py-5">
-  <div class="star-bg">
-    <div id="stars"></div>
-    <div id="stars2"></div>
-    <div id="stars3"></div>
-  </div>
 
-  <div className="container px-5 padding6">
-      <div className="rounded-3 py-5 px-4 px-md-5 mb-5">
-          <div className="text-center mb-5">
-              <div className="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i className="bi bi-envelope"></i></div>
-              <h1 className="fw-bolder text-light">Inicia Sesión!</h1>
-              <p className="lead fw-normal text-light mb-0">Opten un trato VIP iniciando con tu cuenta</p>
-          </div>
-          <div className="row gx-5 justify-content-center">
-              <div className="col-lg-8 col-xl-6">
-                <form className="form text-light" onSubmit={submitHandler}>
-                {loading && <LoadingBox></LoadingBox>}
-                {error && <MessageBox variant="danger">{error}</MessageBox>}
-                  <div className="form-floating mb-3">
-                    <label htmlFor="email">Direccion de Correo</label>
-                    <input 
-                      className="form-control" 
-                      type="email"
-                      id="email"
-                      placeholder="Ingresa el correo"
-                      required
-                      onChange={(e) => setEmail(e.target.value)}>  
-                    </input>
-                  </div>
-                  <div className="form-floating mb-3">
-                      <label for="inputEmail">Contraseña</label>
-                      <input
-                        className="form-control"
-                        type="password"
-                        id="password"
-                        placeholder="Contraseña..."
-                        required
-                        onChange={(e) => setPassword(e.target.value)}>
-                      </input>
-                  </div>
-                  <div className="form-floating mb-3">
-                    <button className="form-control btn btn-primary" type="submit">
-                      Iniciar sesión
-                    </button>
-                  </div>
-                </form>
-                <div className="form-control text-center">
-                  ¿Nuevo cliente? <Link to={`/register?redirect=${redirect}`}>Crea tu cuenta</Link>
+
+    
+
+
+
+
+
+<div>
+
+
+
+
+<div className="breadcrumb_section bg_gray page-title-mini">
+    <div className="container">
+        <div className="row align-items-center">
+        	<div className="col-md-6">
+                <div className="page-title">
+            		<h1></h1>
                 </div>
-              </div>
-          </div>
-      </div>
+            </div>
+            <div className="col-md-6">
+                <ol className="breadcrumb justify-content-md-end">
+                    <li className="breadcrumb-item"><a href="#"></a></li>
+                    <li className="breadcrumb-item"><a href="#"></a></li>
+                    <li className="breadcrumb-item active"></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
 
 
-  </div>
+
+
+<div className="main_content">
+
+
+<div className="login_register_wrap section">
+    <div className="container">
+        <div className="row justify-content-center">
+            <div className="col-xl-6 col-md-10">
+                <div className="login_wrap">
+            		<div className="padding_eight_all bg-white">
+                        <div className="heading_s1">
+                            <h3>Inicia Sesión</h3>
+                            <p className="lead fw-normal mb-0">Opten un trato VIP iniciando con tu cuenta</p>
+                        </div>
+                        <form  onSubmit={submitHandler}>
+                          {loading && <LoadingBox></LoadingBox>}
+                          {error && <MessageBox variant="danger">{error}</MessageBox>}
+                            <div className="form-group">
+                                <input className="form-control" 
+                                name="email"
+                                type="email"
+                                id="email"
+                                placeholder="Ingresa el correo"
+                                required
+                                onChange={(e) => setEmail(e.target.value)}/>
+                            </div>
+                            <div className="form-group">
+                                <input className="form-control"
+                                name="password"
+                                type="password"
+                                id="password"
+                                placeholder="Contraseña..."
+                                required
+                                onChange={(e) => setPassword(e.target.value)}/>
+                            </div>
+                            <div className="login_footer form-group">
+                                <div className="chek-form">
+                                    <div className="custome-checkbox">
+                                        <input className="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox1" value=""/>
+                                        <label className="form-check-label" for="exampleCheckbox1"><span>Recuérdame</span></label>
+                                    </div>
+                                </div>
+                                <a href="#">¿Olvidaste tu contraseña?</a>
+                            </div>
+                            <div className="form-group">
+                                <button type="submit" class="btn btn-fill-out btn-block" name="login">Iniciar sesión</button>
+                            </div>
+                        </form>
+                        <div className="different_login">
+                            <span> ó</span>
+                        </div>
+                        <ul className="btn-login list_none text-center">
+                            <li><a href="#" class="btn btn-facebook"><i class="ion-social-facebook"></i>Facebook</a></li>
+                            <li><a href="#" class="btn btn-google"><i class="ion-social-googleplus"></i>Google</a></li>
+                        </ul>
+                        <div className="form-note text-center">¿Nuevo cliente? <Link to={`/register?redirect=${redirect}`}>Crea tu cuenta</Link></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
   
   {/*
 
@@ -135,7 +177,10 @@ export default function SigninScreen(props) {
       </form>
     </div>
     */}
-</section>
+</div>
+
+
+
 
 
 

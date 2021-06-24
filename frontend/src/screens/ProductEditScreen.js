@@ -179,6 +179,7 @@ export default function ProductEditScreen(props) {
                 rows="3"
                 type="text"
                 placeholder="Introduce la descripción"
+                minlength={45}
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
               ></textarea>

@@ -7,6 +7,29 @@ import MessageBox from '../components/MessageBox';
 import Product from '../components/Product';
 import Rating from '../components/Rating';
 import { prices, ratings } from '../utils';
+import OwlCarousel from 'react-owl-carousel';
+
+import './css/animate.css'; 
+import 'bootstrap/dist/css/bootstrap.css';
+import './bootstrap/css/bootstrap.min.css';
+
+import './css/all.min.css';
+import './css/ionicons.min.css';
+import './css/themify-icons.css';
+import './css/linearicons.css';
+import './css/flaticon.css';
+import './css/simple-line-icons.css';
+
+
+import 'owl.carousel/dist/assets/owl.carousel.min.css'; 
+import 'owl.carousel/dist/assets/owl.carousel.css';  
+import 'owl.carousel/dist/assets/owl.theme.default.css';  
+import './css/magnific-popup.css';
+import './css/jquery-ui.css';
+import './css/slick.css';
+import './css/slick-theme.css';
+import './css/style.css';
+import './css/responsive.css';
 
 export default function SearchScreen(props) {
 
@@ -153,11 +176,17 @@ export default function SearchScreen(props) {
               {products.length === 0 && (
                 <MessageBox>Porducto no encontrado</MessageBox>
               )}
-              <div className="row center">
+              	<OwlCarousel className="releted_product_slider carousel_slider owl-carousel owl-theme" 
+              margin={20} 
+              responsive={{
+                0:{items: 1},
+                481:{items: 2},
+                768:{items: 3},
+                1199:{items: 4}}}>
                 {products.map((product) => (
                   <Product key={product._id} product={product}></Product>
                 ))}
-              </div>
+              </OwlCarousel>
               <div className="row center pagination">
                 {[...Array(pages).keys()].map((x) => (
                   <Link

@@ -1,0 +1,14 @@
+.background-gradient {
+    background: rgb(107, 43, 190);
+    background: -moz-linear-gradient(-45deg, rgb(26, 13, 83) 0%, rgb(255, 255, 255) 100%);
+    background: -webkit-gradient(left top, right bottom, color-stop(0%, rgb(221, 21, 27)), color-stop(100%, rgb(84, 79, 85)));
+    background: -webkit-linear-gradient( 
+-45deg
+ , rgb(194, 16, 22) 0%, rgb(207, 131, 32) 100%);
+    background: -o-linear-gradient(-45deg, rgb(34, 25, 25) 0%, rgb(99, 92, 100) 100%);
+    background: -ms-linear-gradient(-45deg, rgb(133, 18, 22) 0%, rgb(97, 24, 105) 100%);
+    background: linear-gradient( 
+135deg
+ , rgb(196, 166, 167) 0%, rgb(0, 9, 92) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e45d61', endColorstr='#9b28a8', GradientType=1 );
+}

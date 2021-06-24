@@ -1,10 +1,8 @@
 import React, {useEffect}from 'react';
 import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom';
-/*import './index.css';*/
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './css/style.css';
-import './css/footer.css';
+
+
 
 
 import App from './App';
@@ -23,26 +21,6 @@ ReactDOM.render(
 );
 
 
-
-
-window.onscroll = function(){
-  var top =	 window.pageYOffset || document.documentElement.scrollTop;
-  if (top > 50) {
-    document.getElementById('mynav').classList.remove("sticky-header");
-    document.getElementById('mynav').classList.add("sticky-headerscroll");
-
-    //document.getElementById('margen').classList.remove("d-none");
-
-    //document.getElementById('mynav').style.background = "blue";
-  } else {
-    document.getElementById('mynav').classList.add("sticky-header");
-    document.getElementById('mynav').classList.remove("sticky-headerscroll");
-
-    //document.getElementById('margen').classList.add("d-none");
-
-    //document.getElementById('mynav').style.background = "yellow";
-  }
-  };
 
 
 

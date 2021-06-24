@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Link, Route} from 'react-router-dom';
+import ScriptTag from 'react-script-tag';
 import { signout } from './actions/userActions';
 import AdminRoute from './components/AdminRoute';
 import PrivateRoute from './components/PrivateRoute';
@@ -31,10 +32,29 @@ import MapScreen from './screens/MapScreen';
 import DashboardScreen from './screens/DashboardScreen';
 import SupportScreen from './screens/SupportScreen';
 import ChatBox from './components/ChatBox';
+import {Button} from 'reactstrap';
+import Modal from 'react-bootstrap/Modal';
+import Home from './screens/Home';
+import HomeShopwise from './screens/HomeShopwise';
+
+
+
+
+
+import LogoLight from './img/logo_light.png';
+import LogoDark from './img/logo_dark.png';
+import Visa from './img/visa.png';
+import Discover from './img/discover.png';
+import MasterCard from './img/master_card.png';
+import Paypal from './img/paypal.png';
+import AmaricanExpress from './img/amarican_express.png';
+
+
+
 
 
 function App() {
-
+  
   const cart = useSelector(state => state.cart);
   const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
   const { cartItems } = cart;
@@ -53,128 +73,140 @@ function App() {
   useEffect(() => {
     dispatch(listProductCategories());
   }, [dispatch]);
+  
+ 
+
+
+
+
+
+
   return (
+    
     <BrowserRouter>
 
-      <div className="grid-container fontpoppins">
-        {/*--------------HEADER---------------*/}
-        <header className="row m-0">
-          <section className="w-100">
-            
-            <div className="sticky-header" id="mynav">
-              <div className="container-fluid">
-                <div className="row">
-                  {/*COLUMNA UNO*/}
-                  <div className="col-xs-8 col-sm-3 searchtpdi paddl d-none d-sm-none d-md-block">
-                    <div class="row w-100">
-                      <div class="col-md-6">
-                        {/*
-                        <button type="button" className="open-sidebar" onClick={() => setSidebarIsOpen(true)} style={{display:'none'}}>
-                          <i className="fa fa-bars"></i>
-                        </button>
-                        */}
-                        <div className="site-logo">
-                          <Link to="/">
-                            {/*<img src="http://kalanidhithemes.com/live-preview/landing-page/smart-app-landing-page/all-demo/star-background/images/logo.png" alt="Logo"/>*/}
-                            <span>Tupodi</span>
-                          </Link>
-                        </div>
-                      </div>
-                      <div class="col-md-6 d-flex align-items-center">
-                        <Route render={({ history }) => (<SearchBox history={history}></SearchBox>)}></Route> 
-                      </div>
+
+<header className="header_wrap fixed-top dd_dark_skin transparent_header background-gradient">
+
+
+
+<div class="top-header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                	
+                </div>
+                <div class="col-md-6">
+                	<div class="text-center text-md-right">
+                       	<ul class="header_list">
+                        	<li><a href="compare.html" className="topha"><i className="ti-control-shuffle"></i><span>Compare</span></a></li>
+                            <li><a href="wishlist.html" className="topha"><i className="ti-heart" ></i><span>Wishlist</span></a></li>
+                            <li><a href="login.html" className="topha"><i className="ti-user"></i><span>Login</span></a></li>
+						</ul>
                     </div>
-                  </div>
-                  {/*COLUMNA DOS*/}
-                  <div className="col-xs-4 col-sm-9 padd">
-                    <nav className="site-nav" id="site-nav" role="navigation">
-                      <input className="control-nav-mobile" type="checkbox" name="checkbox-nav-mobile" id="checkbox-nav-mobile"/>
-                      <label className="nav-mobile" for="checkbox-nav-mobile">
-                        <i className="fa fa-bars"></i>
-                        <i className="fa fa-close"></i>
-                      </label>
-                      <ul className="nav-off-canvas">
-                        <li className="">
-                          <Link to="/">Inicio</Link>
-                        </li>
-                        <li>
-                          <Link to="/cart">Carrito{cartItems.length > 0 && (
-                            <span className="badge">{cart.cartItems.length}</span>)}
-                          </Link>
-                        </li>
-                        {/*SI EL USUARIO ES ADMINISTRADOR */}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+    <div className="light_skin main_menu_uppercase background-gradient">
+    	<div className="container">
+            <nav className="navbar navbar-expand-lg"> 
+                <Link className="navbar-brand" to="index.html">
+                    <img className="logo_light" src={LogoLight} alt="logo" />
+                    <img className="logo_dark" src={LogoDark} alt="logo" />
+                </Link>
+                {/*
+                <button type="button" className="open-sidebar" onClick={() => setSidebarIsOpen(true)} style={{display:'none'}}>
+                          <i className="fa fa-bars"></i>
+                        </button>*/}
+                <Route render={({ history }) => (<SearchBox history={history}></SearchBox>)}></Route>
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-expanded="false"> 
+                    <span className="ion-android-menu"></span>
+                </button>
+                <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                    <ul className="navbar-nav">
+                    <li><Link className="nav-link nav_item active" to="/">Inicio</Link></li> 
                         {userInfo && userInfo.isAdmin && (
-                        <li className="sub-menu-container">
-                          <label for="sub-menu-control">
-                            Admin 
-                            <i className="fa fa-angle-down"></i>
-                          </label>
-                          <input type="checkbox" className="sub-menu-control" id="sub-menu-control" style={{display: 'none'}}/>
-                          <ul className="site-sub-menu">
-                            <li>
-                              <Link to="/dashboard">Dashboard</Link>
-                            </li>
-                            <li>
-                              <Link to="/productlist">Productos</Link>
-                            </li>
-                            <li>
-                              <Link to="/orderlist">Pedidos</Link>
-                            </li>
-                            <li>
-                              <Link to="/userlist">Usuarios</Link>
-                            </li>
-                            <li>
-                              <Link to="/support">Soporte</Link>
-                            </li>
-                          </ul>
+                        <li className="dropdown">
+                            <Link className="dropdown-toggle nav-link" to="#" data-toggle="dropdown">Admin</Link>
+                            <div className="dropdown-menu">
+                                <ul> 
+                                    <li><Link className="dropdown-item nav-link nav_item" to="/Dashboard">Dashboard</Link></li> 
+                                    <li><Link className="dropdown-item nav-link nav_item" to="/productlist">Productos</Link></li> 
+                                    <li><Link className="dropdown-item nav-link nav_item" to="/orderlist">Pedidos</Link></li>
+                                    <li><Link className="dropdown-item nav-link nav_item" to="/userlist">Usuarios</Link></li>
+                                    <li><Link className="dropdown-item nav-link nav_item" to="/support">Soporte</Link></li>
+                                </ul>
+                            </div>
                         </li>)}
 
-                        {/*SI ESTA INICIADA LA SESSION CONFIRMAR CON JHONNY*/}
                         {userInfo ? (
-                        <li className="sub-menu-container">
-                          <label for="sub-menu-control2">
-                            {userInfo.name} <i className="fa fa-angle-down"></i>{' '}
-                          </label>
-                          <input type="checkbox" className="sub-menu-control" id="sub-menu-control2" style={{display: 'none'}}/>
-                          
-                          <ul className="site-sub-menu">
-                            <li>
-                              <Link to="/profile">Perfil del usuario</Link>
-                            </li>
-                            <li>
-                              <Link to="/orderhistory">Historial de pedidos</Link>
-                            </li>
-                            {/*Condicion PREGUNTAR A JHONNY*/}
-                            {userInfo && userInfo.isSeller && (
-                            <li>
-                              <Link to="/productlist/seller">Productos</Link>
-                            </li>
-                            )}
-                            {/*Otra condicion PREGUNTAR A JHONNY*/}
-                            {userInfo && userInfo.isSeller && (
-                            <li>
-                              <Link to="/orderlist/seller">Pedidos</Link>
-                            </li>
-                            )}
-                            <li>
-                              <Link to="#signout" onClick={signoutHandler}>Salir</Link>
-                            </li>
-                          </ul>
+                        <li className="dropdown">
+                            <Link className="dropdown-toggle nav-link" to="#" data-toggle="dropdown">{userInfo.name}</Link>
+                            <div className="dropdown-menu">
+                                <ul> 
+                                    <li><Link className="dropdown-item nav-link nav_item" to="/profile">Perfil del usuario</Link></li> 
+                                    <li><Link className="dropdown-item nav-link nav_item" to="/orderhistory">Historial de pedidos</Link></li>
+
+                                    {userInfo && userInfo.isSeller && (
+                                    <li><Link className="dropdown-item nav-link nav_item" to="/productlist/seller">Productos</Link></li>
+                                    )}
+                                    {userInfo && userInfo.isSeller && (
+                                    <li><Link className="dropdown-item nav-link nav_item" to="/orderlist/seller">Pedidos</Link></li>
+                                    )}
+                                    <li><Link className="dropdown-item nav-link nav_item" to="#signout" onClick={signoutHandler}>Salir</Link></li>
+                                </ul>
+                            </div>
                         </li>
                         ) : (
-                        <li>
-                          <Link to="/signin">Inicia Sesión
-                          </Link>
-                        </li>
-                        )}             
-                      </ul>
-                    </nav>
-                  </div>                
+                        <li><Link className="nav-link nav_item active" to="/signin">Inicia Sesión</Link></li>
+                        )}  
+                        
+                        
+                        
+                         
+                    </ul>
                 </div>
-              </div>
-            </div>
-	        </section>
-        </header> 
+                <ul className="navbar-nav attr-nav align-items-center">
+                    <li><Link to="javascript:void(0);" className="nav-link search_trigger"><i className="linearicons-magnifier"></i></Link>
+                        <div className="search_wrap">
+                            <span className="close-search"><i className="ion-ios-close-empty"></i></span>
+                            <form>
+                                <input type="text" placeholder="Search" className="form-control" id="search_input"/>
+                                <button type="submit" className="search_icon"><i className="ion-ios-search-strong"></i></button>
+                            </form>
+                        </div><div className="search_overlay"></div><div className="search_overlay"></div>
+                    </li>
+                    <li className="dropdown cart_dropdown"><Link className="nav-link cart_trigger" to="/cart" data-toggle="dropdown"><i className="linearicons-cart"></i>{cartItems.length > 0 && (<span className="cart_count">{cart.cartItems.length}</span>)}</Link>
+                        <div className="cart_box dropdown-menu dropdown-menu-right">
+                            <ul className="cart_list">
+                                <li>
+                                    <Link to="#" className="item_remove"><i className="ion-close"></i></Link>
+                                    <Link to="#"><img src={'assets/images/cart_thamb1.jpg'} alt="cart_thumb1"/>Variable product 001</Link>
+                                    <span className="cart_quantity"> 1 x <span className="cart_amount"> <span className="price_symbole">$</span></span>78.00</span>
+                                </li>
+                                <li>
+                                    <Link to="#" className="item_remove"><i className="ion-close"></i></Link>
+                                    <Link to="#"><img src={'assets/images/cart_thamb2.jpg'} alt="cart_thumb2"/>Ornare sed consequat</Link>
+                                    <span className="cart_quantity"> 1 x <span className="cart_amount"> <span className="price_symbole">$</span></span>81.00</span>
+                                </li>
+                            </ul>
+                            <div className="cart_footer">
+                                <p className="cart_total"><strong>Subtotal:</strong> <span className="cart_price"> <span className="price_symbole">$</span></span>159.00</p>
+                                <p className="cart_buttons"><Link to="#" className="btn btn-fill-line view-cart">View Cart</Link><Link to="#" className="btn btn-fill-out checkout">Checkout</Link></p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+
         {/*---------------FIN DEL HEADER---------------*/}
 
         {/*
@@ -213,7 +245,6 @@ function App() {
           {/*----------------------------------------------------------------------------------*/}
           {/*------------------------------------RUTAS-----------------------------------------*/}
           {/*----------------------------------------------------------------------------------*/}
-          
           <Route path="/seller/:id" component={SellerScreen}></Route>
           <Route path="/cart/:id?" component={CartScreen}></Route>
           <Route path="/product/:id" component={ProductScreen} exact></Route>
@@ -244,40 +275,119 @@ function App() {
           <SellerRoute path="/productlist/seller" component={ProductListScreen}></SellerRoute>
           <SellerRoute path="/orderlist/seller" component={OrderListScreen}></SellerRoute>
           {/*ruta HomeScreem*/}
-          <Route path="/" component={HomeScreen} exact></Route>
+          <Route path="/" component={HomeShopwise} exact></Route>
 
-        
 
-        {/*FOOTER*/}
-        <footer class="tupodi-footer section-blue text-center">
 
-          <div class="container">
+
+          <footer className="footer_dark background-gradient">
+	<div className="footer_top pb_20">
+    <div class="container">
             <div class="row">
-                <div class="col-12">
-                <h3> Download Smart Now</h3>
-                  <div class="site-social-icons">
-                          <a href="#"><i class="fa fa-facebook"></i></a>
-                          <a href="#"><i class="fa fa-twitter"></i></a>
-                          <a href="#"><i class="fa fa-google-plus"></i></a>
-                          <a href="#"><i class="fa fa-pinterest"></i></a>
-                          <a href="#"><i class="fa fa-youtube"></i></a>
-                  </div>
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                	<div class="widget">
+                        <div class="footer_logo">
+                            <a href="#"><img src={LogoLight} alt="logo"/></a>
+                        </div>
+                        <p>If you are going to use of Lorem Ipsum need to be sure there isn't hidden of text</p>
+                    </div>
+                    <div class="widget">
+                        <ul class="social_icons social_white">
+                            <li><a href="#"><i class="ion-social-facebook"></i></a></li>
+                            <li><a href="#"><i class="ion-social-twitter"></i></a></li>
+                            <li><a href="#"><i class="ion-social-googleplus"></i></a></li>
+                            <li><a href="#"><i class="ion-social-youtube-outline"></i></a></li>
+                            <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
+                        </ul>
+                    </div>
+        		</div>
+                <div class="col-lg-2 col-md-3 col-sm-6">
+                	<div class="widget">
+                        <h6 class="widget_title">Useful Links</h6>
+                        <ul class="widget_links">
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Location</a></li>
+                            <li><a href="#">Affiliates</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6">
+                	<div class="widget">
+                        <h6 class="widget_title">Category</h6>
+                        <ul class="widget_links">
+                            <li><a href="#">Men</a></li>
+                            <li><a href="#">Woman</a></li>
+                            <li><a href="#">Kids</a></li>
+                            <li><a href="#">Best Saller</a></li>
+                            <li><a href="#">New Arrivals</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 col-sm-6">
+                	<div class="widget">
+                        <h6 class="widget_title">My Account</h6>
+                        <ul class="widget_links">
+                            <li><a href="#">My Account</a></li>
+                            <li><a href="#">Discount</a></li>
+                            <li><a href="#">Returns</a></li>
+                            <li><a href="#">Orders History</a></li>
+                            <li><a href="#">Order Tracking</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                	<div class="widget">
+                        <h6 class="widget_title">Contact Info</h6>
+                        <ul class="contact_info contact_info_light">
+                            <li>
+                                <i class="ti-location-pin"></i>
+                                <p>123 Street, Old Trafford, New South London , UK</p>
+                            </li>
+                            <li>
+                                <i class="ti-email"></i>
+                                <a href="/cdn-cgi/l/email-protection#a5cccbc3cae5d6ccd1c0cbc4c8c08bc6cac8"><span class="__cf_email__" data-cfemail="ea83848c85aa99839e8f848b878fc4898587">[email&#160;protected]</span></a>
+                            </li>
+                            <li>
+                                <i class="ti-mobile"></i>
+                                <p>+ 457 789 789 65</p>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-          </div>
-          <div class="site-copyright">
-            <p>© Copyright 2016 Start. Designed by <a href="https://graphicriver.net/user/kalanidhithemes" target="_blank">Kalanidhi Themes</a></p>
-          </div>
-        </footer>
-      
-        {/*
-        <footer className="row center">
-          {userInfo && !userInfo.isAdmin && <ChatBox userInfo={userInfo} />}
-          <div>Tupodi 2021</div>{' '}
-        </footer>
-        */}
-        {/*FIN FOOTER*/}
-      </div>
+        </div>
+    </div>
+
+    <div className="bottom_footer bg_dark4">
+        <div className="container">
+            <div className="row">
+                <div className="col-md-6">
+                    <p className="mb-md-0 text-center text-md-left">© 2020 All Rights Reserved by Bestwebcreator</p>
+                </div>
+                <div className="col-md-6">
+                    <ul className="footer_payment text-center text-md-right">
+                        <li><Link to="#"><img src={Visa} alt="visa"/></Link></li>
+                        <li><Link to="#"><img src={Discover} alt="discover"/></Link></li>
+                        <li><Link to="#"><img src={MasterCard} alt="master_card"/></Link></li>
+                        <li><Link to="#"><img src={Paypal} alt="paypal"/></Link></li>
+                        <li><Link to="#"><img src={AmaricanExpress} alt="amarican_express"/></Link></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+{/* END FOOTER */}
+
+<a href="#" className="scrollup" style={{display: 'none'}}><i className="ion-ios-arrow-up"></i></a>
+
+
+
+
+
+
     </BrowserRouter>
     
   );

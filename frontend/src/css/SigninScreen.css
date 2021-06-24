@@ -20,7 +20,6 @@ body
     border: none;
     background: linear-gradient(to right, rgba(70,200,255,1) 0%, rgba(129,211,126,1) 100%);
     height: auto;
-    transition: 0.5s;
 }
 .btn-primary:hover {
     box-shadow: 10px 10px 34px -11px rgb(0 0 0 / 75%);
